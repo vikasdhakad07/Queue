@@ -20,3 +20,26 @@ class Solution
         return al;
     }
 }
+
+
+Method 02: Maximum of all subarrays of size k
+
+class Solution
+{
+    //Function to find maximum of each subarray of size k.
+    static ArrayList <Integer> max_of_subarrays(int arr[], int n, int k)
+    {
+        // Your code here
+        PriorityQueue<Integer> pq=new PriorityQueue<>((a,b)->b-a);
+        ArrayList<Integer> al=new ArrayList<>();
+        for(int i=0;i<n;i++){
+            pq.add(arr[i]);
+            
+            if(k<=i+1){
+               al.add(pq.peek());
+               pq.remove(arr[i-k+1]);
+            }
+        }
+        return al;
+    }
+}
